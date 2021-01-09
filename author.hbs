@@ -1,0 +1,74 @@
+{{!< default}}
+
+{{#author}}
+<div class="authorPage-profile">
+    <header class="baseHeader">
+        <div id="BaseHeaderId">
+            <img id="ProfileHeaderImage" alt="" src="{{img_url cover_image}}">
+        </div>
+    </header>
+    <article>
+        <section class="canvasZone authorPage-pane">
+            <div>
+                <div class="controlZone">
+                    <div class="authorPage-profilePicture">
+                    {{#if profile_image}}
+                        <img src="{{img_url profile_image}}" alt="" />
+                    {{else}}
+                        <img src="https://www.gravatar.com/avatar/{{id}}-{{slug}}?s=40&d=identicon" alt="" />
+                    {{/if}}
+                    </div>
+                    <div class="authorPage-profileName">
+                        <h2>{{name}}</h2>
+                    </div>
+                    <div class="authorPage-profileInfo">
+                        <div>
+                            <span class="ms-Icon ms-Icon--ContactInfo"></span>
+                            <h3>Contact information</h3>
+                        </div>
+                        <div class="authorPage-profileInfoDetails">
+                            {{#if location}}<div><i class="ms-Icon ms-Icon--POISolid"></i><span>{{location}}</span></div>{{/if}}
+                            {{#if website}}<a href="{{website}}" title="My website" target="_blank"><i class="ms-Icon ms-Icon--Globe"></i><span>{{website}}</span></a>{{/if}}
+                            {{#if twitter}}<a href="{{twitter_url}}" title="My Twitter profile" target="_blank"><i>{{> "icons/twitter"}}</i><span>{{twitter}}</span></a>{{/if}}
+                            {{#if facebook}}<a href="{{facebook_url}}" title="My Facebook profile" target="_blank"><i>{{> "icons/facebook"}}</i><span>{{facebook}}</span></a>{{/if}}
+                            <div><i class="ms-Icon ms-Icon--News"></i><span>{{../pagination.total}}</span></div>
+                        </div>
+                    </div>
+                    {{#if bio}}
+                    <div class="authorPage-profileBio">
+                        <div>
+                            <span class="ms-Icon ms-Icon--RightDoubleQuote"></span>
+                            <h3>About me</h3>
+                        </div>
+                        <p>{{bio}}</p>
+                    </div>
+                    {{/if}}
+                    <hr />
+                </div>
+            </div>
+        </section>
+{{/author}}
+        <section class="canvasZone authorPage-posts">
+            <div>
+                <div class="controlZone ms-Grid">
+                    <div class="ms-Grid-row" role="presentation">
+                        <div class="ms-Grid-col ms-sm12">
+                            <div class="list-posts ms-Grid-row" role="presentation">
+                            {{#foreach posts}}
+                                {{> "controls/card"}}
+                            {{else}}
+                                <center>No post available.</center>
+                            {{/foreach}}
+                            </div>
+                            {{#if posts}}
+                            <div class="ms-Grid-row" role="presentation">
+                                {{pagination}}
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+</div>

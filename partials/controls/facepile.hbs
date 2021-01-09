@@ -1,0 +1,17 @@
+<div class="facepile-itemContainer">
+    <ul class="facepile-authors">
+        {{#foreach authors}}
+            <li class="facepile-author">
+                <a href="{{url}}" title="{{name}}" class="facepile-itemLink">
+                    <div class="persona-image image-size32" role="presentation">
+                        {{#if profile_image}}
+                            <img class="image-image image-cover ms-fadeIn400" src="{{img_url profile_image}}" alt="" />
+                        {{else}}
+                            <img class="image-image image-cover ms-fadeIn400" src="https://www.gravatar.com/avatar/{{id}}-{{slug}}?s=40&d=identicon" alt="" />
+                        {{/if}}
+                    </div>
+                </a>
+            </li>
+        {{/foreach}}
+    </ul>
+</div>

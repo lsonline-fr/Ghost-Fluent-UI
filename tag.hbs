@@ -1,0 +1,35 @@
+{{!< default}}
+
+<article>
+    {{#tag}}
+    <div class="header-imageTitle">
+    {{> "pageHeader"}}
+    </div>
+    {{/tag}}
+    <section class="canvasZone">
+        <div>
+            <div class="controlZone ms-Grid">
+                <div class="ms-Grid-row" role="presentation">
+                {{#tag}}
+                    {{#if description}}
+                    <center>{{description}}</center>
+                    <hr />
+                    {{/if}}
+                {{/tag}}
+                </div>
+                <div class="list-posts ms-Grid-row" role="presentation">
+                {{#foreach posts}}
+                    {{> "controls/card"}}
+                {{else}}
+                    <center>No post available.</center>
+                {{/foreach}}
+                </div>
+                {{#if posts}}
+                <div class="ms-Grid-row" role="presentation">
+                    {{pagination}}
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </section> 
+</article>

@@ -1,0 +1,13 @@
+<footer>
+    <div class="footerCopyright">
+        {{!-- Proudly powered by Ghost / Proudly published with Ghost --}}
+      <span>
+          <a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a>
+           &copy; {{date format='YYYY'}} All Rights Reserved. Powered by <a href="https://ghost.org/" target="_blank">Ghost</a></span>
+    </div>
+    <nav class="footerLinks">
+        {{#if @site.secondary_navigation}}
+            {{navigation type="secondary"}}
+        {{/if}}
+    </nav>
+</footer>

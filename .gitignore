@@ -1,0 +1,32 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency
+package-lock.json
+
+# Dependency directories
+node_modules
+
+# Build generated files
+assets/built
+dist
+
+# OSX
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Visual Studio files
+.ntvs_analysis.dat
+.vs
+bin
+obj
+
+# Environment
+.env
+
+# Tests and coverage files
+junit

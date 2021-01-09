@@ -1,0 +1,52 @@
+<div class="livePersonaCard ms-slideUpIn20" style="display: none;">
+    <div class="lpc-profileCard">
+        <header>
+            <div>
+                <a href="{{url}}">
+                    <div class="persona-coin" role="presentation">
+                        <div class="persona-imageArea">
+                            <div class="persona-image">
+                                {{#if profile_image}}
+                                <img class="ms-fadeIn400" src="{{img_url profile_image size="xs"}}" alt="" />
+                                {{else}}
+                                <img class="ms-fadeIn400" src="https://www.gravatar.com/avatar/{{id}}-{{slug}}?s=72&d=identicon" alt="" />
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="persona-details">
+                        <div title="{{name}}">{{name}}</div>
+                    </div>
+                </a>
+            </div>
+        </header>
+        <section class="userInfoArea">
+            <div role="region">
+                <h2>Contact</h2>
+                <div class="lpc-detailList">
+                    {{#if location}}
+                    <div class="lpc-detailList-item">
+                        <i class="ms-Icon ms-Icon--POISolid"></i>
+                        <div class="lpc-detailContent">{{location}}</div>
+                    </div>
+                    {{/if}}
+                    {{#if bio}}
+                    <div class="lpc-detailList-item">
+                        <i class="ms-Icon ms-Icon--Edit"></i>
+                        <div class="lpc-detailContent">{{bio}}</div>
+                    </div>
+                    {{/if}}
+                    {{#if website}}
+                    <a href="{{website}}" title="My website" target="_blank" class="lpc-detailList-item">
+                        <i class="ms-Icon ms-Icon--Globe"></i>
+                        <span class="lpc-detailContent">{{website}}</span>
+                    </a>
+                    {{/if}}
+                    <a href="{{url}}" class="lpc-detailList-item">
+                        <span class="lpc-detailContent">Show more</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

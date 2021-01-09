@@ -1,0 +1,31 @@
+{{!< default}}
+
+<article>
+    {{#post}}
+    {{> "pageHeader"}}
+    {{!--
+    <section class="canvasZone row">
+        <div>
+            <div class="controlZone">
+                {{content}}
+            </div>
+        </div>
+    </section>
+    --}}
+    {{/post}}
+    <section class="canvasZone">
+        <div>
+            <div class="controlZone ms-Grid">
+                <div class="list-tile ms-Grid-row" role="presentation">
+                {{#get 'tags' limit='all' include='count.posts' order='count.posts desc'}}
+                    {{#foreach tags}}
+                        {{> "controls/tile"}}
+                    {{else}}
+                        <center>No tag available.</center>
+                    {{/foreach}}
+                {{/get}}
+                </div>
+            </div>
+        </div>
+    </section>
+</article>

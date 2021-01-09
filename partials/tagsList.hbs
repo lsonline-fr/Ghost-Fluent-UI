@@ -1,0 +1,12 @@
+{{#foreach tags}}
+    {{#if @first}}
+    <ul class="p-tagsList">
+        <li>Tags:</li>
+    {{/if }}
+        <li class="tagsList-item">
+            <a href="{{url}}"{{#if accent_color}} class="accentColor" style="background-color: {{accent_color}};"{{/if}}>{{name}}</a>
+        </li>
+    {{#if @last}}
+    </ul>
+    {{/if }}
+{{/foreach}}

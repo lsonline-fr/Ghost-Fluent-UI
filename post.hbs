@@ -1,0 +1,21 @@
+{{!< default}}
+
+<article>
+    {{#post}}
+    {{> "pageHeader"}}
+    <section class="canvasZone row">
+        <div>
+            <div class="controlZone">
+                {{content}}
+                {{> tagsList}}
+            </div>
+        </div>
+    </section>
+    {{^has tag="#no-related"}}
+    {{> recommendedItems}}
+    {{/has}}
+    {{^has tag="#no-comment"}}
+    {{> commentsWrapper}}
+    {{/has}}
+    {{/post}}
+</article>

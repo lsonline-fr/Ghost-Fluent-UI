@@ -1,0 +1,127 @@
+<header id="siteHeader">
+    <div class="{{#if @site.cover_image}}siteHeaderRow-Img{{else}}siteHeaderRow{{/if}}" {{#if
+        @site.cover_image}}style="background-image:url({{@site.cover_image}});" {{/if}}>
+        <div class="mainHeader">
+            <button type="button" class="leftNavToggleButton" title="Toggle navigation pane"
+                aria-label="navigation pane" data-automation-id="OpenNavigationPanel">
+                <span role="presentation" class="ms-Icon ms-Icon--GlobalNavButton ms-fontSize-20"></span>
+            </button>
+            <div class="siteLogo">
+                {{#if @site.logo}}
+                <a class="siteLogoWrapper" href="{{@site.url}}" aria-label="{{@site.title}}"
+                    data-navigationcomponent="SiteHeader" data-automation-id="SiteLogoLink">
+                    <img class="siteLogoImg" src="{{@site.logo}}" alt="" style="min-height: 0px; min-width: 0px;" />
+                </a>
+                {{/if}}
+            </div>
+            <div class="titleAndnavSiteWrapper">
+                <div class="siteTitleSubcell">
+                    <span data-automation-id="SiteHeaderTitle" role="heading">
+                        <a href="{{@site.url}}" class="title"
+                            data-navigationcomponent="SiteHeader">{{@site.description}}</a>
+                    </span>
+                </div>
+                <div class="siteAdjacentTitleSubcell">
+                    <div class="ms-HorizontalNav siteNavRoot">
+                        <nav class="ms-HorizontalNavItems">
+                            {{#if @site.navigation}}
+                            {{navigation}}
+                            {{/if}}
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="sideActionsSiteWrapper">
+                <div class="actionsSubcell">
+                    <a class="subscribe-button" href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/"
+                        target="_blank" data-automation-id="SiteHeaderFollowButton" aria-label="Follow">
+                        <span class="ms-Icon ms-Icon--FavoriteList ms-fontSize-16" role="presentation"></span>
+                        <span class="label">Follow</span>
+                    </a>
+                </div>
+                <div class="moreActionsButton">
+                    <button type="button" role="button" title="Toggle navigation pane" aria-label="More">
+                        <span role="presentation" class="ms-Icon ms-Icon--More ms-fontSize-16"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{#is "post, page"}}
+    <div class="commandBarWrapper">
+        <div class="p-commandBar">
+            <div class="p-commandBar-primaryCommand">
+                <button class="button-commandBar" type="button" data-automation-id="shareButton">
+                    <span class="flexContainer">
+                        <i class="button-icon ms-Icon ms-Icon--Share"></i>
+                        <span class="button-text">Share to</span>
+                        <i class="button-menuIcon ms-Icon ms-Icon--ChevronDown"></i>
+                    </span>
+                </button>
+                <button class="button-commandBar" type="button" data-automation-id="tocButton">
+                    <span class="flexContainer">
+                        <i class="button-icon ms-Icon ms-Icon--OpenPane"></i>
+                        <span class="button-text">Table of contents</span>
+                    </span>
+                </button>
+            </div>
+            <div class="p-commandBar-secondaryCommand">
+                <button type="button" class="button-static">
+                    <span class="flexContainer">
+                        <time datetime="{{date}}">Published {{date post.published_at format="L"}}</time>
+                    </span>
+                </button>
+                <button class="button-primary" type="button" data-automation-id="scrollToTopButton" disabled="true">
+                    <span class="flexContainer">
+                        <i class="button-icon ms-Icon ms-Icon--ChevronUpEnd6"></i>
+                        <span class="button-text">Scroll to top</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <ul class="contextualMenu-list" style="display: none;">
+            <li class="contextualMenu-item">
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{url absolute=" true"}}&title={{encode
+                    post.title}}" title="LinkedIn" target="_blank" rel="noopener" data-automation-id="ShareToLinkedIn">
+                    <span class="contextualMenu-itemImage ms-Icon ms-Icon--LinkedInLogo"></span>
+                    <span>LinkedIn</span>
+                </a>
+            </li>
+            <li class="contextualMenu-item">
+                <a href="https://twitter.com/intent/tweet?text={{encode post.title}}&url={{url absolute=" true"}}"
+                    title="Twitter" target="_blank" rel="noopener" data-automation-id="ShareToTwitter">
+                    <span class="contextualMenu-itemImage">{{> "icons/twitter"}}</span>
+                    <span>Twitter</span>
+                </a>
+            </li>
+            <li class="contextualMenu-item">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute=" true"}}" title="Facebook"
+                    target="_blank" rel="noopener" data-automation-id="ShareToFacebook">
+                    <span class="contextualMenu-itemImage">{{> "icons/facebook"}}</span>
+                    <span>Facebook</span>
+                </a>
+            </li>
+            <li class="contextualMenu-item">
+                <a href="https://www.yammer.com/messages/new?login=true&trk_event=yammer_share&status={{url absolute="true"}}&group_id=null" class="yammer-share-popup" title="Yammer"
+                    onclick="window.open('https://www.yammer.com/messages/new?login=true&trk_event=yammer_share&status={{url absolute="true"}}&group_id=null', 'yammer-share-popup', 'width=600,height=400');return false;" data-automation-id="ShareToYammer">
+                    <span class="contextualMenu-itemImage ms-Icon ms-Icon--YammerLogo"></span>
+                    <span>Yammer</span>
+                </a>
+            </li>
+            <li class="contextualMenu-item">
+                <a href="https://teams.microsoft.com/share?assignInstr={{encode post.excerpt}}&preview=true&assignTitle={{encode post.title}}&href={{url absolute="true"}}&referrer={{@site.url}}" class="ms-teams-share-popup" title="Teams"
+                    onclick="window.open('https://teams.microsoft.com/share?assignInstr={{encode post.excerpt}}&preview=true&assignTitle={{encode post.title}}&href={{url absolute="true"}}&referrer={{@site.url}}', 'ms-teams-share-popup', 'width=700,height=600');return false;" data-automation-id="ShareToTeams">
+                    <span class="contextualMenu-itemImage ms-Icon ms-Icon--TeamsLogo"></span>
+                    <span>Teams</span>
+                </a>
+            </li>
+            <li class="contextualMenu-item">
+                <a href="mailto: ?subject={{@site.title}}: {{encode post.title}}&amp;body={{encode post.excerpt}}%0A{{url absolute="true"}}" title="Email" data-automation-id="ShareToEmail">
+                    <span class="contextualMenu-itemImage ms-Icon ms-Icon--Mail"></span>
+                    <span>Email</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    {{/is}}
+</header>
