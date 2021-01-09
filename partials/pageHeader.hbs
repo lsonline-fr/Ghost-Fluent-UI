@@ -1,0 +1,48 @@
+<header class="canvasZone
+    {{#is "tag"}}
+        {{#if accent_color}} accentColor{{/if}}
+    {{/is}}
+    {{#if feature_image}} titleBackgroundImage{{/if}}
+" id="pageHeader" 
+    {{#is "tag"}}
+        {{#if accent_color}} style="background-color: {{accent_color}};"{{/if}}
+    {{/is}}
+>
+    <div>
+        {{#if feature_image}}
+        <div class="titleRegionBackgroundImage">
+            <img src="{{img_url feature_image}}" alt="" aria-label="This is the background image of title area." />
+        </div>
+        {{/if}}
+        <div class="controlZone">
+            <div>
+                <div></div>
+                <div>
+                    {{#if primary_tag}}
+                    <div class="topicHeader">
+                        <a href="{{primary_tag.url}}"{{#if primary_tag.accent_color}} style="background-color: {{primary_tag.accent_color}};"{{/if}}>{{primary_tag.name}}</a>
+                    </div>
+                    {{/if}}
+                    <div class="contentHeader">
+                        <h1>{{#is "tag"}}{{name}}{{else}}{{title}}{{/is}}</h1>
+                        {{#is "post"}}
+                        <div class="postDetails">
+                            <div class="authorByLine">
+                                {{#if primary_author}}
+                                {{> "controls/persona" persona=primary_author}}
+                                {{/if}}
+                            </div>
+                            {{#if reading_time}}
+                            <div class="readingTime">
+                                <i class="ms-Icon ms-Icon--Timer"></i>
+                                <span>{{reading_time}}</span>
+                            </div>
+                            {{/if}}
+                        </div>
+                        {{/is}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,84 @@
+<div id="HeaderSuiteBar" role="banner">
+    <div id="HeaderLeftRegion">
+        <div>
+            <button class="apps-button" type="button" role="button" title="App Launcher" aria-label="App Launcher"
+                data-automation-id="AppsLauncherButton">
+                <span class="ms-Icon ms-Icon--WaffleOffice365" role="presentation"></span>
+            </button>
+        </div>
+    </div>
+    <div id="CenterRegion">
+        <div id="leftRegion">
+            <a href="{{@site.url}}">{{@site.title}}</a>
+        </div>
+        <div id="searchBoxRegion">
+            <div id="searchBoxContainer">
+                <form role="search">
+                    <div>
+                        <label aria-label="Search" for="SuiteBarSearchInput" class="ms-fontSize-16">
+                            <span class="ms-Icon ms-Icon--Search"></span>
+                        </label>
+                    </div>
+                    <input type="search" id="SuiteBarSearchInput" class="ms-fontSize-14" accesskey="S"
+                        spellcheck="false" autocomplete="off" autocorrect="false" placeholder="Search on my blog"
+                        role="combobox" aria-label="Search box. Suggestion appear when you type." />
+                    <div>
+                        <button class="clearSearch ms-fontSize-20" type="reset" title="Clear the search box"
+                            aria-label="Clear the search box" data-tab="false" style="display: none;" data-automation-id="ClearSearchBoxButton">
+                            <span class="ms-Icon ms-Icon--Cancel" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div id="GhostHunerSearchResults" style="display: none;"></div>
+        </div>
+        <div id="topButtonsRegion">
+            <div id="HeaderButtonRegion_Social">
+                {{#if @site.facebook}}
+                <div id="MainLink_facebook_container">
+                    <a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener" data-automation-id="FacebookProfil">{{>
+                        "icons/facebook"}}</a>
+                </div>
+                {{/if}}
+                {{#if @site.twitter}}
+                <div id="MainLink_twitter_container">
+                    <a href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener" data-automation-id="TwitterProfil">{{>
+                        "icons/twitter"}}</a>
+                </div>
+                {{/if}}
+            </div>
+            <div id="HeaderButtonRegion_MobileButtons_container">
+                <div id="MainLink_SearchMobileButtons_container">
+                    <button type="button" role="button" title="Search" aria-label="Search" id="MobileSearchButton" data-automation-id="ExpandSearchBarButtton">
+                        <span class="ms-Icon ms-Icon--Search" role="presentation"></span>
+                    </button>
+                </div>
+                <div id="MainLink_MobileButtons_container">
+                    <button type="button" role="button" title="Access to additional buttons in mobile view"
+                        aria-label="Access to additional buttons in mobile view">
+                        <span class="ms-Icon ms-Icon--More" role="button"></span>
+                    </button>
+                </div>
+            </div>
+            <div id="MainLink_LightTheme_container">
+                <button type="button" role="button" title="Switch to Light Theme" aria-label="Switch to Light Theme" data-automation-id="ToggleLightThemeButton">
+                    <span class="ms-Icon ms-Icon--Brightness" role="button"></span>
+                </button>
+            </div>
+            <div id="MainLink_DarkTheme_container">
+                <button type="button" role="button" title="Switch to Dark Theme" aria-label="Switch to Dark Theme" data-automation-id="ToggleDarkThemeButton">
+                    <span class="ms-Icon ms-Icon--ClearNight" role="button"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="HeaderRightRegion">
+        {{!--
+        <div>
+            <button class="login-button" type="button" role="button" title="Login" aria-label="Login">
+                <span class="ms-Icon ms-Icon--UserOptional" role="button"></span>
+            </button>
+        </div>
+        --}}
+    </div>
+</div>

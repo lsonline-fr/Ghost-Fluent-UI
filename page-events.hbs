@@ -1,0 +1,52 @@
+{{!< default}}
+
+<article>
+    {{#post}}
+    {{> "pageHeader"}}
+    {{!--
+    <section class="canvasZone row">
+        <div>
+            <div class="controlZone">
+                {{content}}
+            </div>
+        </div>
+    </section>
+    --}}
+    {{/post}}
+    <section class="canvasZone">
+        <div>
+            <div class="controlZone ms-Grid">
+                <div class="visual-titleArea">
+                    <h2>Upcoming event(s)</h2>
+                </div>
+                {{#get "posts" filter="tag:hash-event+tag:hash-upcoming" include="authors,tags" as |upcomingevents pagination|}}
+                <div class="list-posts ms-Grid-row" role="presentation">
+                    {{#foreach upcomingevents}}
+                        {{> "controls/card"}}
+                    {{else}}
+                        <center>No upcoming event currently.</center>
+                    {{/foreach}}
+                </div>
+                {{/get}}
+            </div>
+        </div>
+    </section>
+    <section class="canvasZone">
+        <div>
+            <div class="controlZone ms-Grid">
+                <div class="visual-titleArea">
+                    <h2>Past event(s)</h2>
+                </div>
+                {{#get "posts" filter="tag:hash-event+tag:hash-past" include="authors,tags" as |pastevents pagination|}}
+                <div class="list-posts ms-Grid-row" role="presentation">
+                    {{#foreach pastevents}}
+                        {{> "controls/card"}}
+                    {{else}}
+                        <center>No featured post available.</center>
+                    {{/foreach}}
+                </div>
+                {{/get}}
+            </div>
+        </div>
+    </section>
+</article>

@@ -1,0 +1,42 @@
+{{!< default}}
+
+<article>
+    {{^is "paged"}}
+    {{!-- Show most used tags only on the first page of home --}}
+    <section class="canvasZone canvasZone-neutral">
+        <div>
+            <div class="controlZone ms-Grid">
+                <div class="visual-titleArea">
+                    <h2>Most used tags</h2>
+                    <span><a href="{{@site.url}}/tags" class="seeAll">See all</a></span>
+                </div>
+                <div class="list-tile ms-Grid-row" role="presentation">
+                    {{#get 'tags' limit='4' include='count.posts' order='count.posts desc'}}
+                        {{#foreach tags}}
+                            {{> "controls/tile"}}
+                        {{else}}
+                            <center>No tag available.</center>
+                        {{/foreach}}
+                    {{/get}}
+                </div>
+            </div>
+        </div>
+    </section>
+    {{/is}}
+    <section class="canvasZone">
+        <div>
+            <div class="controlZone ms-Grid">
+                <div class="list-posts ms-Grid-row" role="presentation">
+                    {{#foreach posts}}
+                        {{> "controls/card"}}
+                    {{else}}
+                        <center>No post available.</center>
+                    {{/foreach}}
+                </div>
+                <div class="ms-Grid-row" role="presentation">
+                    {{pagination}}
+                </div>
+            </div>
+        </div>
+    </section>
+</article>

@@ -1,0 +1,159 @@
+version: '3.7'
+
+services:
+  ghost-mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "8025"
+      - "1025"
+    restart: always
+
+  mysql-ghost:
+    # Execute once start: GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password';
+    image: mysql/mysql-server:5.7.24-1.1.8
+    networks:
+      - ghost-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=ghost
+      - MYSQL_USER=fluentui-user
+      - MYSQL_PASSWORD=supersecret
+    volumes:
+      - type: bind
+        source: ../data/mysql
+        target: /var/lib/mysql
+    restart: always
+
+  phpmyadmin-ghost:
+    image: phpmyadmin/phpmyadmin:latest
+    networks:
+      - ghost-mysql
+      - default
+    ports:
+      - "80"
+      - "443"
+    environment:
+      - PMA_HOST=mysql-ghost
+    depends_on:
+      - mysql-ghost
+    restart: always
+
+  # https://www.geeek.org/installer-elasticsearch-logstash-site-internet/
+  ghost-elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      #- bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - ELASTIC_USERNAME=elastic
+      - ELASTIC_PASSWORD=password01
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true
+      - discovery.type=single-node
+    volumes:
+      - type: bind
+        source: ../data/elasticsearch
+        target: /usr/share/elasticsearch/data
+    networks:
+      - ghost-elk
+    restart: always
+    
+  ghost-elastic-logstash:
+    image: docker.elastic.co/logstash/logstash:7.10.1
+    command: logstash -f /usr/share/logstash/pipeline/logstash.conf
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - XPACK_MONITORING_ENABLED=false
+    volumes:
+      - type: bind
+        source: ./config/elk/mysql-connector-java-5.1.49.jar
+        target: /usr/share/logstash/vendor/mysql/mysql-connector-java-5.1.49.jar
+      - type: bind
+        source: ./config/elk/logstash.conf
+        target: /usr/share/logstash/pipeline/logstash.conf
+    depends_on:
+      - ghost-elasticsearch
+    networks:
+      - ghost-mysql
+      - ghost-elk
+    restart: always
+
+  isso:
+    image: wonderfall/isso:latest
+    build:
+      context: .
+      args:
+        - ISSO_VER=0.12.3
+    ports:
+      - "80"
+    environment:
+      - GID=1000
+      - UID=1000
+      - VIRTUAL_HOST=fluent-isso.local
+      - VIRTUAL_PORT=8080
+    volumes:
+      - type: bind
+        source: ./config/isso
+        target: /config
+      - type: bind
+        source: ../data/isso
+        target: /isso/database
+    networks:
+      - default
+    restart: always
+
+  ghost:
+    image: ghost:latest
+    ports:
+      - "80"
+    expose:
+      - "80"
+    networks:
+      - ghost-mysql
+      - ghost-elk
+      - default
+    volumes:
+      - type: bind
+        source: ./
+        target: /var/lib/ghost/content/themes/ghost-fluent-ui
+      - type: bind
+        source: ../data/ghost
+        target: /var/lib/ghost/content
+    environment:
+      - NODE_ENV=development
+      - VIRTUAL_HOST=fluent-ui.local
+      - url=http://fluent-ui.local
+      - VIRTUAL_PORT=2368
+      - database__client=mysql
+      - database__connection__host=mysql-ghost
+      - database__connection__user=fluentui-user
+      - database__connection__password=supersecret
+      - database__connection__database=ghost
+    depends_on:
+      - mysql-ghost
+    restart: always
+
+  ghost-nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    networks:
+      - ghost-elk
+      - default
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - type: bind
+        source: ./config/elk/fluent-ui.local_location
+        target: /etc/nginx/vhost.d/fluent-ui.local_location
+    restart: always
+  
+networks:
+  ghost-mysql:
+    driver: bridge
+  ghost-elk:
+    driver: bridge
+  default:

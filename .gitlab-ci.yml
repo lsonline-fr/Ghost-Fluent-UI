@@ -1,0 +1,51 @@
+image: node:latest
+
+stages:
+  - .pre
+  - test
+  - build
+  - deploy
+
+install:
+  stage: .pre
+  script:
+    - npm i
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 30min
+  cache:
+    paths:
+      - node_modules/
+
+test:
+  stage: test
+  script:
+    - npm run test
+
+lint:
+  stage: test
+  script:
+    - npm run lint
+  artifacts:
+    paths:
+      - ./junit
+    reports:
+      junit: ./junit/*lint.xml
+
+build:
+  stage: build
+  script:
+    - npm run zip
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - dist/
+
+deploy:
+  stage: deploy
+  script:
+    - npm run deploy
+  when: manual
+  only:
+    - master

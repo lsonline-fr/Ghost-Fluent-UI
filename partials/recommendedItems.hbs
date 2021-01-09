@@ -1,0 +1,29 @@
+<section class="canvasZone canvasZone-neutral">
+    <div>
+        <div class="controlZone ms-Grid">
+            <div class="visual-titleArea">
+                <h2>You may also be interested in</h2>
+            </div>
+            <div class="list-posts ms-Grid-row" role="presentation">
+                <!--previous-->
+                {{#next_post}}
+                {{> "controls/card"}}
+                {{/next_post}}
+                {{#if primary_tag}}
+                {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" include="tags,authors" limit="2" as |related_posts|}}
+                    {{#if related_posts}}
+                        <!--similar-->
+                        {{#foreach related_posts}}
+                            {{> "controls/card"}}
+                        {{/foreach}}
+                    {{/if}}
+                {{/get}}
+                {{/if}}
+                <!--next-->
+                {{#prev_post}}
+                {{> "controls/card"}}
+                {{/prev_post}}
+            </div>
+        </div>
+    </div>
+</section>
