@@ -8,7 +8,7 @@ Ghost theme using the Fluent UI framework and based on the Microsoft SharePoint 
 
 To enjoy the features of this theme, some of them should be configured manually in accordance with your wishes.
 
-You can see more information about the configuration into the [Wiki](./-/wikis) pages of this project.
+You can see more information about the configuration into the [Wiki](../../wikis) pages of this project.
 
 ## Path to awesome
 
