@@ -11,13 +11,15 @@ fluentui.content = (function () {
      */
     function imgGallery() {
         var images = document.querySelectorAll('.kg-gallery-image img');
-        images.forEach(function (image) {
-            var container = image.closest('.kg-gallery-image');
-            var width = image.attributes.width.value;
-            var height = image.attributes.height.value;
-            var ratio = width / height;
-            container.style.flex = ratio + ' 1 0%';
-        });
+        if (images) {
+            for (var i = 0; i < images.length; i++) {
+                var container = images[i].closest('.kg-gallery-image');
+                var width = images[i].attributes.width.value;
+                var height = images[i].attributes.height.value;
+                var ratio = width / height;
+                container.style.flex = ratio + ' 1 0%';
+            }
+        }
     }
 
     /**
