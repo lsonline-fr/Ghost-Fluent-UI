@@ -3238,7 +3238,7 @@
       } else {
         ghost_root = "/ghost/api/v3";
       }
-    } catch {
+    } catch (e) {
       ghost_root = "/ghost/api/v3";
     }
 
@@ -3435,7 +3435,7 @@
           if (ghost_root_url) {
             ghost_root = ghost_root_url;
           }
-        } catch {
+        } catch (e) {
           ghost_root = "/ghost/api/v3";
         }
 

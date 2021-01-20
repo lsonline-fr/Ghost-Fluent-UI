@@ -1,7 +1,7 @@
 {
     "name": "fluent-ui",
     "description": "A Ghost Theme based on Microsoft Fluent UI Framework and Microsoft SharePoint design",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "engines": {
         "ghost": ">=3.0.0",
         "ghost-api": "v3"
@@ -33,7 +33,7 @@
         "url": "https://gitlab.lsonline.fr/ghost-themes/ghost-fluent-ui"
     },
     "bugs": "https://gitlab.lsonline.fr/ghost-themes/ghost-fluent-ui/-/issues",
-    "contributors": "https://gitlab.lsonline.fr/ghost-themes/ghost-fluent-ui/-/graphs/master",
+    "contributors": ["https://gitlab.lsonline.fr/ghost-themes/ghost-fluent-ui/-/graphs/master"],
     "scripts": {
         "lint": "gulp lint",
         "dev": "gulp",

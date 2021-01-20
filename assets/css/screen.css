@@ -699,6 +699,9 @@ hr {
     color: var(--black);
     height: 100%;
     user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .button-command {
@@ -738,6 +741,9 @@ hr {
     background-color: var(--white);
     color: var(--black);
     user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .button-primary {
@@ -802,7 +808,8 @@ button .button-icon {
     color: #ffffff;
 }
 
-button .button-text {
+.button-primary .button-text,
+.button-default .button-text {
     flex-grow: 1;
     display: block;
     margin: 0 4px;
@@ -2591,6 +2598,9 @@ html[data-theme=dark] #HeaderSuiteBar #CenterRegion #topButtonsRegion #MainLink_
     background-color: var(--white);
     color: var(--black);
     user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 #isso-thread input[type=submit] {
@@ -2781,7 +2791,7 @@ footer .footerCopyright span {
     line-height: 19px;
     text-align: left;
     -webkit-font-smoothing: antialiased;
-    font-size: 14px;
+    font-size: 16px;
     margin: 14px 24px 14px 0;
     align-items: center;
 }
@@ -3266,7 +3276,6 @@ footer.extended .megaMenu-section .menu-item {
 }
 
 @media screen and (max-width: 639px) {
-
     .authorPage-profile .canvasZone.authorPage-pane .authorPage-profileBio,
     .authorPage-profile .canvasZone.authorPage-pane .authorPage-profileInfo {
         text-align: left;
