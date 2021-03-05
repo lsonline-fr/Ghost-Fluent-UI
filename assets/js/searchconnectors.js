@@ -20,9 +20,11 @@ var SearchConnectors = (function () {
         _onDismiss = null;
         var searhcInput = document.getElementById('SuiteBarSearchInput');
         if ('undefined' !== typeof ghosthunter_key && null != ghosthunter_key && searhcInput) {
+            this.preventEnter(searhcInput);
             this.ghostHunterConnector();
             this.updateJSONDL();
         } else if ('undefined' !== typeof elasticsearch_auth && null != elasticsearch_auth && searhcInput) {
+            this.preventEnter(searhcInput);
             this.elasticsearchConnector(elasticsearch_auth);
             this.initSearchFromURL();
             this.updateJSONDL();
@@ -68,6 +70,14 @@ var SearchConnectors = (function () {
         enumerable: true,
         configurable: true
     });
+
+    SearchConnectors.prototype.preventEnter = function (elem) {
+        elem.addEventListener('keydown', function(e) {
+            if (e.which == 13 || e.keyCode == 13) {
+                e.preventDefault();
+            }
+        });
+    };
 
     SearchConnectors.prototype.ghostHunterConnector = function () {
         var _this = this;

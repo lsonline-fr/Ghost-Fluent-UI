@@ -8,7 +8,7 @@ Ghost theme using the Fluent UI framework and based on the Microsoft SharePoint 
 
 To enjoy the features of this theme, some of them should be configured manually in accordance with your wishes.
 
-You can see more information about the configuration into the [Wiki](../../wikis) pages of this project.
+You can see more information about the configuration in the [Wiki](../../wikis) pages of this project.
 
 ## Path to awesome
 
@@ -56,7 +56,7 @@ Use the provided Docker compose to install and test the theme:
 
 ### Local deployment test
 
-Among the different gulp tasks, one of thme consist to deploy automatically the theme into the target Ghost environment.
+Among the different gulp tasks, one of them consists to deploy automatically the theme into the target Ghost environment.
 
 It is possible to test it locally:
 
