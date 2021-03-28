@@ -3443,7 +3443,6 @@ footer.extended .megaMenu-section .menu-item {
 
 .kg-image-card img {
     max-width: 100%;
-    width: 100%;
     height: auto;
 }
 
@@ -3460,6 +3459,10 @@ footer.extended .megaMenu-section .menu-item {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+}
+
+.kg-image-card.kg-width-full img {
+    width: 100%;
 }
 
 .kg-image-card figcaption {
