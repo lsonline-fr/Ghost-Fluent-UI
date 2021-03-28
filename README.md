@@ -45,7 +45,7 @@ Use the provided Docker compose to install and test the theme:
     ```
    * Windows
         ```
-        C:\Windows\System32\driver\etc\hosts
+        C:\Windows\System32\drivers\etc\hosts
         ```
    * MAC and Linux
         ```

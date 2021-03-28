@@ -134,14 +134,14 @@ async function deploy(done) {
         const api = new GhostAdminApi({
             url,
             key: admin_api_key,
-            version: 'v3'
+            version: 'v4'
         });
 
         await api.themes.upload({ file: zipFile });
         await api.themes.activate(themeName);
         done();
     } catch (err) {
-        handleError(done)
+        handleError(done);
     }
 }
 

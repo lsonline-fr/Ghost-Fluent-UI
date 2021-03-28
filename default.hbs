@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{@site.lang}}" dir="ltr">
+<html lang="{{@site.locale}}" dir="ltr">
 
 <head>
     {{!-- Document Settings --}}
@@ -20,7 +20,7 @@
 
     {{!-- Ghost Reusable Settings --}}
     <script type="text/javascript">
-        var _ghostPageContext = { siteUrl: '{{@site.url}}', lang: '{{@site.lang}}', timezone: '{{@site.timezone}}' };
+        var _ghostPageContext = { siteUrl: '{{@site.url}}', lang: '{{@site.locale}}', timezone: '{{@site.timezone}}' };
     </script>
 
     {{ghost_head}}

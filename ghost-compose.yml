@@ -147,6 +147,9 @@ services:
     volumes:
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - type: bind
+        source: ./config/client_max_body_size.conf
+        target: /etc/nginx/conf.d/client_max_body_size.conf
+      - type: bind
         source: ./config/elk/fluent-ui.local_location
         target: /etc/nginx/vhost.d/fluent-ui.local_location
     restart: always
