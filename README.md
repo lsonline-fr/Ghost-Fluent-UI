@@ -62,5 +62,5 @@ It is possible to test it locally:
 
 1. Create a Ghost integration access token (from the admin web interface)
 2. Create a `.env` file into the root of the solution
-3. Append to the environment file, `GHOST_API_URL=`
-4. Append to the environment file, `GHOST_ADMIN_API_KEY`
+3. Append to the environment file, `GHOST_API_URL=http://fluent-ui.local`
+4. Append to the environment file, `GHOST_ADMIN_API_KEY=<YOUR_KEY>`
