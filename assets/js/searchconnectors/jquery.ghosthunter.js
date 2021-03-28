@@ -3236,10 +3236,10 @@
       if (undefined !== typeof ghost_root_url || null != ghost_root_url) {
         ghost_root = ghost_root_url;
       } else {
-        ghost_root = "/ghost/api/v3";
+        ghost_root = "/ghost/api/v4";
       }
     } catch (e) {
-      ghost_root = "/ghost/api/v3";
+      ghost_root = "/ghost/api/v4";
     }
 
     var postsUrl = ghost_root + "/content/posts/?key=" + ghosthunter_key + "&limit=all&include=tags";
@@ -3436,7 +3436,7 @@
             ghost_root = ghost_root_url;
           }
         } catch (e) {
-          ghost_root = "/ghost/api/v3";
+          ghost_root = "/ghost/api/v4";
         }
 
         var postsUrl = ghost_root + "/content/posts/?key=" + ghosthunter_key + "&limit=all&fields=id" + "&filter=" + "updated_at:>\'" + this.latestPost.replace(/\..*/, "").replace(/T/, " ") + "\'";
