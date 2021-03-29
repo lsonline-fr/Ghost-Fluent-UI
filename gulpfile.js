@@ -130,11 +130,12 @@ async function deploy(done) {
         const url = process.env.GHOST_API_URL || env.parsed.GHOST_API_URL;
         const admin_api_key = process.env.GHOST_ADMIN_API_KEY || env.parsed.GHOST_ADMIN_API_KEY;
         const themeName = process.env.THEME_NAME || require('./package.json').name;
+        const apiVersion = process.env.API_VERSION || require('./package.json').engines['ghost-api'];
         const zipFile = `dist/${themeName}.zip`;
         const api = new GhostAdminApi({
             url,
             key: admin_api_key,
-            version: 'v4'
+            version: apiVersion
         });
 
         await api.themes.upload({ file: zipFile });

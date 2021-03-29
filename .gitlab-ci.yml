@@ -1,4 +1,4 @@
-image: node:latest
+image: node:10
 
 stages:
   - .pre
@@ -42,10 +42,12 @@ build:
     paths:
       - dist/
 
-deploy:
+deploy_prod:
   stage: deploy
   script:
     - npm run deploy
+  environment:
+    name: production
   when: manual
   only:
     - master
