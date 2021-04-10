@@ -603,7 +603,7 @@ body {
 }
 
 .ms-Fabric {
-    color: var(--black)!important;
+    color: var(--black) !important;
 }
 
 .fluentPage {
@@ -3280,6 +3280,7 @@ footer.extended .megaMenu-section .menu-item {
 }
 
 @media screen and (max-width: 639px) {
+
     .authorPage-profile .canvasZone.authorPage-pane .authorPage-profileBio,
     .authorPage-profile .canvasZone.authorPage-pane .authorPage-profileInfo {
         text-align: left;
@@ -3397,6 +3398,30 @@ footer.extended .megaMenu-section .menu-item {
 
 .kg-embed-card iframe {
     position: relative !important;
+}
+
+.kg-embed-card.video-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+    width: 90%;
+}
+
+.kg-embed-card.video-responsive>iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute !important;
+    bottom: 0;
+    right: 0;
+}
+
+@media screen and (max-width: 639px) {
+    .kg-embed-card.video-responsive {
+        width: 100%;
+    }
 }
 
 .fluid-width-video-wrapper {

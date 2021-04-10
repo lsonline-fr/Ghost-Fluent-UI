@@ -165,6 +165,18 @@ fluentui.content = (function () {
     }
 
     /**
+     * Make the videos responsives
+     */
+     function fitVideos() {
+        var videos = document.querySelectorAll('iframe[src*="youtube.com"], iframe[src*="player.vimeo.com"]');
+        if (videos) {
+            for (var i = 0; i < videos.length; i++) {
+                videos[i].parentElement.className = videos[i].parentElement.className + ' video-responsive';
+            }
+        }
+    }
+
+    /**
      * Specified HTML Element has CSS class name
      * @param {HTMLElement} el HTML Element to toggle CSS Class
      * @param {string} cls CSS Class name
@@ -187,6 +199,7 @@ fluentui.content = (function () {
             }, 100);
             headerAnchors();
             externalLinks();
+            fitVideos();
         }
     };
 })();

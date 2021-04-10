@@ -6,17 +6,16 @@ stages:
   - build
   - deploy
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .npm/
+
 install:
   stage: .pre
   script:
     - npm i
-  artifacts:
-    paths:
-      - node_modules/
-    expire_in: 30min
-  cache:
-    paths:
-      - node_modules/
 
 test:
   stage: test
