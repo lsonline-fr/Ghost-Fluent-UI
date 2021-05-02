@@ -314,9 +314,27 @@ fluentui.headersuitebar = (function () {
         }
     }
 
+    /**
+     * Display member initials behind the member image when the member is logged in 
+     */
+    function memberInitials() {
+        var name = document.getElementById('MainLink_MeHiddenName');
+        if (name) {
+            var initialsElem = document.getElementById('MainLink_MeInitials');
+            if (initialsElem) {
+                var words = name.innerText.trim().split(' ');
+                var letterOne = words[0].charAt(0);
+                var letterTwo = words.length > 1 ? words[words.length - 1].charAt(0) : '';
+                var initialDisplayed = letterOne + '' + letterTwo;
+                initialsElem.innerText = initialDisplayed;
+            }
+        }
+    }
+
     return {
         init: function () {
             _appsPanelListener = false;
+            memberInitials();
             setDocTheme();
             addBtnThemeEventListener();
             searchClearBtnEvent();

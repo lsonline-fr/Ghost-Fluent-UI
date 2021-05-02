@@ -42,7 +42,7 @@ services:
 
   # https://www.geeek.org/installer-elasticsearch-logstash-site-internet/
   ghost-elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.1
     ports:
       - 9200:9200
       - 9300:9300
@@ -63,7 +63,7 @@ services:
     restart: always
     
   ghost-elastic-logstash:
-    image: docker.elastic.co/logstash/logstash:7.10.1
+    image: docker.elastic.co/logstash/logstash:7.12.1
     command: logstash -f /usr/share/logstash/pipeline/logstash.conf
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"

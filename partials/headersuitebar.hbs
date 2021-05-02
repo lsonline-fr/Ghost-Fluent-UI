@@ -73,12 +73,26 @@
         </div>
     </div>
     <div id="HeaderRightRegion">
-        {{!--
-        <div>
-            <button class="login-button" type="button" role="button" title="Login" aria-label="Login">
-                <span class="ms-Icon ms-Icon--UserOptional" role="button"></span>
-            </button>
-        </div>
-        --}}
+        {{#if @member}}
+            <div id="MainLink_Me">
+                <button type="button" role="button" title="Account manager for {{@member.name}}" aria-label="Account manager for {{@member.name}}" data-automation-id="MainLink_Me" class="gh-portal-open" data-portal="account">
+                    <span class="ms-hide" id="MainLink_MeHiddenName">
+                    {{#if @member.name}}
+                        {{@member.name}}
+                    {{else}}
+                        {{@member.email}}
+                    {{/if}}
+                    </span>
+                    <span id="MainLink_MeInitials"></span>
+                    <img id="MainLink_MePhoto" src="{{@member.avatar_image}}" />
+                </button>
+            </div>
+        {{else}}
+            <div id="HeaderButtonRegion_SignIn">
+                <button type="button" role="button" title="Sign in" aria-label="signin" data-automation-id="signin" data-portal="signin">
+                    <span class="ms-Icon ms-Icon--Signin" role="button"></span>
+                </button>
+            </div>
+        {{/if}}
     </div>
 </div>
