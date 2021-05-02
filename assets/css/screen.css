@@ -3710,3 +3710,11 @@ footer.extended .megaMenu-section .menu-item {
         display: block;
     }
 }
+
+aside.gh-post-upgrade-cta {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin: 0 -50vw 24px;
+}
