@@ -1451,6 +1451,32 @@ html[data-theme=dark] #HeaderSuiteBar #CenterRegion #topButtonsRegion #MainLink_
     font-size: 16px;
 }
 
+#HeaderSuiteBar #HeaderRightRegion #MainLink_Me>button {
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+    top: -2px;
+}
+
+#HeaderSuiteBar #HeaderRightRegion #MainLink_Me>button>#MainLink_MePhoto {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#HeaderSuiteBar #HeaderRightRegion #MainLink_Me>button>#MainLink_MeInitials {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 10%;
+    text-transform: uppercase;
+}
+
 /*
  * SiteHeader
  */
